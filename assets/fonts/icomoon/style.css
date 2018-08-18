@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'icomoon';
+  src:
+    url('fonts/icomoon.ttf?us5hwq') format('truetype'),
+    url('fonts/icomoon.woff?us5hwq') format('woff'),
+    url('fonts/icomoon.svg?us5hwq#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.im {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.im-facebook:before {
+  content: "\ea90";
+}
+.im-blog:before {
+  content: "\e902";
+}
+.im-tseni:before {
+  content: "\e903";
+}
+.im-time:before {
+  content: "\e904";
+}
+.im-za-nas:before {
+  content: "\e905";
+}
+.im-kontakti:before {
+  content: "\e906";
+}
+.im-promocii:before {
+  content: "\e907";
+}
+.im-galeriya:before {
+  content: "\e908";
+}
+.im-nachalo:before {
+  content: "\e909";
+}
+.im-open-book:before {
+  content: "\e90a";
+}
+.im-phone:before {
+  content: "\e90b";
+}
