@@ -1,9 +1,24 @@
 <?php
+
+add_filter( 'tiny_mce_before_init', function($initArray){
+  $initArray['fontsize_formats'] = "9px 10px 12px 13px 14px 16px 18px 20px 21px 22px 24px 26px 28px 32px 36px";
+	return $initArray;
+});
+
+add_filter( 'mce_buttons_2', function($buttons){
+  array_unshift( $buttons, 'fontsizeselect' );
+	return $buttons;
+});
+
+add_filter( 'mce_buttons', function($buttons){
+  array_splice( $buttons, 9, 0, array('alignjustify') );
+	return $buttons;
+});
+
 register_nav_menus(array(
 	'main-menu' => 'Main menu',
 	'top-menu' => 'Top Menu',
 ));
-
 
 add_action('customize_register', 'register_customize_sections2');
 function register_customize_sections2($wp_customize) {

@@ -5,6 +5,7 @@ function enqueue_main_styles() {
 	wp_enqueue_style('main', get_stylesheet_directory_uri() . '/style.css');
 	wp_enqueue_style('icomoon', get_stylesheet_directory_uri() . '/assets/fonts/icomoon/style.css');
 	wp_enqueue_style('gfonts', 'https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=cyrillic');
+	wp_register_script( 'hh_parallax' , get_stylesheet_directory_uri().'/assets/js/hh_parallax.js', $in_footer = true);
 }
 
 add_action('after_setup_theme','hh_setup_theme');
