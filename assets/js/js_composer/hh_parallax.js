@@ -12,15 +12,14 @@ window.addEventListener('load', (e) => {
   }
 
   parallaxes.forEach((el,i) => {
-    const parImg = document.createElement('img');
-    el.parStart = (el.offsetTop - el.offsetHeight - 50) / docHeight;
-    el.parEnd = (el.offsetTop + winHeight + el.offsetHeight - 100) / docHeight;
+    el.parStart = (el.offsetTop - winHeight) / scrlHeight;
+    el.parEnd = (el.offsetTop + el.offsetHeight) / scrlHeight;
     el.parSpeed = el.getAttribute('data-hh-parallax');
     el.parTarget; el.parCurrent;
+    const parImg = document.createElement('img');
     parImg.setAttribute('src',el.getAttribute('data-vc-parallax-image'));
     parImg.setAttribute('style','position: absolute; left: 0; top: '+ (((el.parSpeed < 0) && '0%') || '-100%') + '; width: 100%; z-index: 0;');
     el.appendChild(parImg);
-    console.log(el.offsetTop,winHeight,el.offsetHeight,docHeight)
   });
 
   function update(){
@@ -47,7 +46,6 @@ window.addEventListener('load', (e) => {
     scrlPercent = scrlOffset/scrlHeight || 0;
     update();
     requestAnimationFrame(loop);
-    console.log(scrlPercent);
   }
 
   window.addEventListener('resize',function(){
