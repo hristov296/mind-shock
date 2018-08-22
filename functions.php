@@ -34,7 +34,7 @@ function hh_cf_enqueue() {
 
 require_once __DIR__.'/inc/theme.php';
 require_once __DIR__.'/inc/shortcodes.php';
-require_once __DIR__.'/inc/hh-walker-nav.php';
+//require_once __DIR__.'/inc/hh-walker-nav.php';
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 	require_once __DIR__.'/inc/wc-metabox.php';
 	require_once __DIR__.'/inc/share-products.php';
