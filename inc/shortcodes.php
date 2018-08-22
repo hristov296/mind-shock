@@ -4,6 +4,7 @@ function sc_latest_blog($attr){
   $args = shortcode_atts(array(
     'post_type' => 'post',
     'orderby' => 'date',
+    'order' => 'ASC',
     'posts_per_page' => 3,
     'post__in' => '',
   ), $attr);
@@ -13,7 +14,8 @@ function sc_latest_blog($attr){
 		$args['post__in'] = $id_list;
 	}
   $related_posts = new WP_Query($args);
-  ob_start(); ?>
+  ob_start();
+    if ($related_posts->have_posts()) { ?>
     <div class="latest-blog-posts">
       <?php while ($related_posts->have_posts()) {
         $related_posts->the_post(); ?>
@@ -25,9 +27,9 @@ function sc_latest_blog($attr){
             <a href="<?php the_permalink(); ?>" class="vc_general vc_btn3"><?= esc_html__('Виж още', 'blog') ?></a>
           </div>
         </div>
-      <?php }
-       wp_reset_postdata(); ?>
-    </div><?php
+      <?php } ?>
+    </div><?php }
+    wp_reset_postdata();
   $output = ob_get_clean();
   return $output;
 }
