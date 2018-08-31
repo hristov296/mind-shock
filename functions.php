@@ -10,10 +10,12 @@ function enqueue_main_styles() {
 
 add_action('after_setup_theme','hh_setup_theme');
 function hh_setup_theme(){
+	//add_theme_support('woocommerce');
 	add_theme_support('custom-logo');
 	add_theme_support('title-tag');
 	add_theme_support('html5', array( 'comment-form', 'comment-list', 'gallery', 'caption' ));
 	//add_image_size('gal-thumb',75,75,true);
+	// load_theme_textdomain( 'mind-shock', get_stylesheet_directory() . '/lang' );
 }
 
 add_action('wp','hh_cf_enqueue');

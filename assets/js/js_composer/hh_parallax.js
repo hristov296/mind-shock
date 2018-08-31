@@ -1,19 +1,37 @@
 window.addEventListener('load', (e) => {
   const parallaxes = document.querySelectorAll('[data-hh-parallax]');
-  let scrlPercent, scrlOffset, scrlHeight, winHeight, winWidth, docHeight
-  resize();
+  let scrlPercent, scrlOffset,resizeTimer;
+  let docHeight = document.body.clientHeight;
+  let winHeight = window.innerHeight;
+  let winWidth = window.innerWidth;
+  let headerHeight = document.querySelector('header').offsetHeight;
+  let scrlHeight = docHeight - winHeight;
+  loop()
 
   function resize(){
     docHeight = document.body.clientHeight;
     winHeight = window.innerHeight;
     winWidth = window.innerWidth;
+    headerHeight = document.querySelector('header').offsetHeight;
     scrlHeight = docHeight - winHeight;
+    parallaxes.forEach((el,i)=>{
+      el.parStart = (el.offsetTop + headerHeight - winHeight) / scrlHeight;
+      el.parEnd = (el.offsetTop + headerHeight + el.offsetHeight) / scrlHeight;
+      let elImg = el.querySelector('img');
+      if (winWidth < 1200){
+        elImg.style.left = 'calc(100% - 1200px)';
+        elImg.style.width = '1200px';
+      } else {
+        elImg.style.width = '100%';
+        elImg.style.left = '0';
+      }
+    })
     loop();
   }
 
   parallaxes.forEach((el,i) => {
-    el.parStart = (el.offsetTop - winHeight) / scrlHeight;
-    el.parEnd = (el.offsetTop + el.offsetHeight) / scrlHeight;
+    el.parStart = (el.offsetTop + headerHeight - winHeight) / scrlHeight;
+    el.parEnd = (el.offsetTop + headerHeight + el.offsetHeight) / scrlHeight;
     el.parSpeed = el.getAttribute('data-hh-parallax');
     el.parTarget; el.parCurrent;
     const parImg = document.createElement('img');
@@ -49,8 +67,11 @@ window.addEventListener('load', (e) => {
   }
 
   window.addEventListener('resize',function(){
-    if (winWidth !== window.innerWidth) {
-      resize();
-    }
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(()=>{
+      if (winWidth !== window.innerWidth) {
+        resize();
+      }
+    },200);
   });
 })
