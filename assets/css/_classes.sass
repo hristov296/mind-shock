@@ -1,0 +1,31 @@
+/* main: ../../style.sass */
+
+form.wpcf7-form
+  display: grid
+  grid-gap: 5px 15px
+  grid-auto-columns: calc(50% - 8px)
+  input:not(.wpcf7-submit), textarea,select
+    width: 100%
+    padding: 6px
+    height: 100%
+    border: 1px solid $blue
+    border-bottom-width: 2px
+    font-family: $sec-font
+  [class*='textarea']
+    grid-column: span 2
+    height: 141px
+  .main-button
+    grid-column: 2
+    display: flex
+    flex-flow: row-reverse
+  .wpcf7-response-output
+    grid-column: span 2
+    padding: 12px
+  .wpcf7-not-valid-tip
+    display: none
+    padding: 15px
+  .wpcf7-not-valid
+    border-style: solid !important
+    border-color: $blue !important
+  div.wpcf7-validation-errors, div.wpcf7-acceptance-missing
+    border-color: $blue
