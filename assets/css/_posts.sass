@@ -1,0 +1,130 @@
+/* main: ../../style.sass */
+
+.single, .archive, .blog
+  #primary
+    .header-general
+      margin-bottom: 35px
+    .container
+      display: flex
+      align-items: flex-start
+
+.main-post-content
+  flex: 1
+  background-color: $white
+  padding: 15px 15px 0
+  .archive-title
+    font-size: 24px
+    margin: 0
+    font-weight: 400
+    & + .main-sep
+      margin-bottom: 15px
+
+.main-post-sidebar
+  width: 270px
+  // background-color: $white
+  margin-left: 30px
+
+.single-post
+  #primary
+    padding-top: 25px
+    .main-post-content
+      padding: 5px 5px 0
+      background-color: transparent
+      .post-main
+        background-color: $white
+        margin-bottom: 25px
+      .attachment-post-thumbnail
+        max-width: 100%
+        height: auto
+        margin-bottom: 10px
+      .post-meta
+        padding: 5px 0
+        margin: 0 10px
+        border-bottom: 1px solid $orange
+        display: flex
+        align-items: center
+        .post-date
+          font-size: 18px
+          color: $orange
+          font-weight: 700
+          .im
+            margin-right: 10px
+      .post-title
+        margin: 0 10px 25px
+        font-weight: 400
+      .post-content
+        margin: 0 10px
+
+.blog,.category
+  #primary
+    padding-top: 35px
+    .main-post-content
+      background-color: transparent
+      padding: 0
+      .post-thumbnail
+        display: flex
+        padding: 4px
+        background-color: $white
+        a
+          display: flex
+          align-items: center
+          width: 100%
+        .attachment-post-thumbnail
+          width: 100%
+          height: auto
+      .post-meta
+        padding: 10px 0 5px
+        margin: 0 10px
+        border-bottom: 1px solid $orange
+        display: flex
+        align-items: center
+        .post-date
+          font-size: 18px
+          color: $orange
+          font-weight: 700
+          .im
+            margin-right: 10px
+      .post-title
+        margin: 0 10px 15px
+        font-weight: 400
+      .post-excerpt
+        margin: 0 10px
+      .post-content
+        display: flex
+        flex-flow: column
+        margin: 0 auto
+        width: 95%
+        background-color: $white
+        transform: translateY(-20%)
+      .main-button
+        margin: 10px 10px 10px auto
+
+.nav-links
+  display: flex
+  .page-numbers
+    display: block
+    background-color: $white
+    color: $blue
+    width: 40px
+    height: 40px
+    line-height: 40px
+    text-align: center
+    margin-right: 5px
+    font-family: $sec-font
+    font-size: 18px
+    &.current
+      background-color: $blue
+      color: $white
+
+@media (max-width: 990px)
+  .single, .archive, .blog
+    #primary
+      .container
+        flex-wrap: wrap
+        .main-post-content
+          flex: 100%
+          margin-bottom: 35px
+        .main-post-sidebar
+          width: 100%
+          max-width: 400px
+          margin: 0 auto

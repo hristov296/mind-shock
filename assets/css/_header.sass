@@ -1,1 +1,186 @@
 /* main: ../../style.sass */
+
+#header
+  position: relative
+  z-index: 100
+.header-top
+  background-color: $blue
+  .container
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    color: $white
+    font-size: 18px
+    .top-title
+      margin: 0 auto 0 160px
+      text-transform: uppercase
+    .menu-item
+      background-color: $orange
+      a
+        display: block
+        padding: 8px 13px
+        line-height: 1
+    .fb-link
+      font-size: 24px
+      margin-left: 15px
+  @media (max-width: 500px)
+    display: none
+.header-main
+  box-shadow: 0px 0px 10px 8px #00000023
+  .container
+    display: flex
+  .site-logo
+    font-size: 0
+    margin-top: -35px
+    .custom-logo
+      width: 100%
+      height: auto
+    @media (max-width: 500px)
+      margin: 0
+      max-width: 100px
+  .questions
+    align-self: center
+    @media (max-width: 990px)
+      display: none
+  .top-phone
+    display: grid
+    grid-template-columns: 30px auto
+    grid-gap: 6px 8px
+    align-items: center
+    color: $blue
+    height: 70px
+    border-left: 2px solid $white
+    margin-left: 30px
+    padding-left: 15px
+    .im-phone
+      grid-row: span 2
+      text-align: center
+      font-size: 24px
+    span
+      &:nth-child(2)
+        align-self: flex-end
+      &:nth-child(3)
+        align-self: flex-start
+        font-size: 20px
+  #menu-main-menu
+    flex: 1
+    justify-content: flex-end
+    > .menu-item
+      position: relative
+      color: $blue
+      transition: color 0.08s ease-in
+      &:after
+        content: ''
+        position: absolute
+        left: 15px
+        top: 67%
+        width: calc(100% - 30px)
+        height: 2px
+        background-color: $orange
+        transform: scaleX(0)
+        transform-origin: left center
+        transition: transform 0.08s ease-in
+      a
+        display: block
+        height: 97px
+        line-height: 97px
+        font-size: 18px
+        padding: 0 15px
+      @media (max-width: 1080px)
+        a
+          padding: 0 9px
+        &:after
+          left: 9px
+          width: calc(100% - 18px)
+      &.menu-item-has-children
+        .im
+          font-size: 14px
+          padding-left: 5px
+        .sub-menu
+          opacity: 0
+          pointer-events: none
+          transition: opacity 0.15s ease-in
+          position: absolute
+          top: 100%
+          left: 0
+          background-color: $white
+          color: $blue
+          border-top: 2px solid $blue
+          border-bottom: 2px solid $orange
+          padding: 5px 0
+          min-width: 170px
+          .main-menu-link
+            height: 30px
+            line-height: 30px
+            white-space: nowrap
+            transition: color 0.15s ease-in
+            position: relative
+            &::before
+              content: ''
+              position: absolute
+              left: 5px
+              top: 13px
+              width: 4px
+              height: 4px
+              background-color: transparent
+              transition: background-color 0.15s ease-in
+        &:hover, &:focus
+          .sub-menu
+            opacity: 1
+            pointer-events: all
+            .menu-item:not(.menu-item-object-custom)
+              &:hover,&:focus,&.current-menu-item
+                color: $orange
+                .main-menu-link:before
+                  background-color: $orange
+      &:hover,&:focus,&.current-menu-item,&.current-page-ancestor,&.current-menu-ancestor
+        color: $orange
+        &:after
+          transform: scaleX(1)
+    @media (max-width: 767px)
+      display: none
+  .mob-trigger
+    margin-left: auto
+    align-items: center
+    font-size: 36px
+    color: $blue
+    cursor: pointer
+    padding-left: 35px
+    display: none
+    @media (max-width: 767px)
+      display: flex
+
+.header-mobile
+  display: none
+  background-color: $white
+  position: absolute
+  left: 0
+  right: 0
+  top: 100%
+  #menu-main-menu-1
+    flex-flow: column
+    padding: 15px 0
+    border-top: 2px solid $blue
+    border-bottom: 2px solid $orange
+    .menu-item
+      color: $blue
+      transition: color 0.08s ease-in
+      font-size: 18px
+      .main-menu-link
+        display: inline-block
+        padding: 4px 10px
+      .im-chevron-down
+        padding: 6px
+        transition: transform 0.15s
+        cursor: pointer
+        display: inline-block
+      .sub-menu
+        display: none
+        .menu-item
+          .main-menu-link
+            padding-left: 20px
+      &.active-sub
+        .im-chevron-down
+          transform: rotate(-90deg)
+      &.current-menu-item:not(.menu-item-object-custom),&.current-page-ancestor:not(.menu-item-object-custom),&.current-menu-ancestor:not(.menu-item-object-custom)
+        color: $orange

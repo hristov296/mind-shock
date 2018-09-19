@@ -1,16 +1,23 @@
 /* main: ../../style.sass */
 
+.fw-400
+  font-weight: 400
+
 form.wpcf7-form
   display: grid
-  grid-gap: 5px 15px
-  grid-auto-columns: calc(50% - 8px)
+  grid-gap: 6px
+  grid-auto-columns: calc(50% - 3px)
+  margin-bottom: 15px
   input:not(.wpcf7-submit), textarea,select
     width: 100%
     padding: 6px
     height: 100%
-    border: 1px solid $blue
-    border-bottom-width: 2px
+    background-color: $white
+    border: none
+    border-bottom: 2px solid $blue
     font-family: $sec-font
+    &:active,&:focus
+      border-color: $orange
   [class*='textarea']
     grid-column: span 2
     height: 141px
@@ -25,7 +32,11 @@ form.wpcf7-form
     display: none
     padding: 15px
   .wpcf7-not-valid
-    border-style: solid !important
-    border-color: $blue !important
+    //border-style: solid !important
+    border-color: #bf0b0b !important
   div.wpcf7-validation-errors, div.wpcf7-acceptance-missing
     border-color: $blue
+  @media (max-width:767px)
+    grid-auto-columns: 100%
+    [class*='textarea'],.main-button,.wpcf7-response-output
+      grid-column: 1

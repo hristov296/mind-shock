@@ -1,0 +1,117 @@
+/* main: ../../style.sass */
+
+.main-sep
+  display: flex
+  justify-content: flex-start
+  &.center-sep
+    justify-content: center
+  .sep-dash
+    height: 2px
+    width: 80px
+    background-color: $orange
+
+.main-button
+  display: flex
+  .see-more,input
+    display: block
+    padding: 8px 40px
+    font-family: $sec-font
+    font-size: 18px
+    cursor: pointer
+  &.style-1
+    border: 1px solid $orange
+    .see-more,input
+      color: $orange
+      transition: color 0.15s,background-color 0.15s
+      &:hover,&:focus
+        color: $white
+        background-color: $orange
+  &.style-2
+    .see-more,input
+      color: $white
+      background-color: $blue
+      transition: background-color 0.15s, border-color 0.15s
+    input
+      border: 1px solid $blue
+      &:hover, &:focus
+        border-color: $orange
+        background-color: $orange
+  &.align-right
+    justify-content: flex-end
+  &.align-left
+    justify-content: flex-start
+  &.align-center
+    justify-content: center
+  &.align-stretch
+    display: block
+    .see-more
+      padding: 8px 0px
+
+.loop-posts
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(auto, 380px))
+  grid-gap: 15px
+  justify-content: center
+  .loop-post
+    display: flex
+    flex-flow: column
+    align-items: center
+    background-color: $white
+    padding: 15px
+    .im
+      font-size: 56px
+      color: $orange
+      margin-bottom: 10px
+      display: inline-block
+    .post-title
+      margin: 0
+      font-size: 28px
+      font-weight: 400
+      text-align: center
+    p
+      text-align: justify
+    .main-sep
+      margin: 15px 0
+
+.loop-blog-posts
+  margin: 0
+  .loop-blog-post
+    display: flex
+    margin-bottom: 15px
+    .blog-post-thumbnail
+      padding: 2px
+      background-color: $white
+      margin-right: 4px
+      min-width: 270px
+      a
+        display: flex
+    .blog-post-img
+      width: 100%
+      height: auto
+    .blog-post-cont
+      display: flex
+      flex-flow: column
+      background-color: $white
+      .post-meta
+        padding: 10px 0 5px
+        margin: 0 10px
+        border-bottom: 1px solid $orange
+        display: flex
+        align-items: center
+        .post-date
+          font-size: 18px
+          color: $orange
+          font-weight: 700
+          .im
+            margin-right: 10px
+      .post-title
+        margin: 0 10px 15px
+        font-weight: 400
+      .post-excerpt
+        margin: 0 10px 10px
+      .main-button
+        margin: auto 5px 5px auto
+    @media (max-width: 767px)
+      flex-flow: column
+      .blog-post-thumbnail
+        margin: 0

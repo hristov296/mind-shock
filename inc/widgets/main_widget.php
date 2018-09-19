@@ -18,22 +18,22 @@ class pp_widget extends WP_Widget{
   public function widget( $args, $instance ) {
     $inst = array(
       'is_page',
-      'is_single',
+      'is_singular',
       'is_post_type_archive'
     );
-
     foreach ($inst as $curr) {
       if (!empty($instance[$curr])){
         $$curr = explode(',',$instance[$curr]);
-        $$curr = $curr($$curr) ? true : false ;
+        if ($curr == 'is_post_type_archive' && in_array(get_query_var('posttype_query_var'),$$curr)){
+          $$curr = true;
+        } else {
+          $$curr = $curr($$curr) ? true : false ;
+        }
       }
     }
-
-    if (!$is_page && !$is_post && !$is_post_type_archive){
+    if (!$is_page && !$is_singular && !$is_post_type_archive){
       return;
     }
-
-
     ?>
     <div class="side-widget">
       <h4 class="widget-title"><?php echo $instance['title']; ?></h4>
@@ -49,7 +49,7 @@ class pp_widget extends WP_Widget{
       'title' => 'Title',
       'cont' => 'Shortcode',
       'is_page' => 'is_page',
-      'is_single' => 'is_single',
+      'is_singular' => 'is_singular',
       'is_post_type_archive' => 'is_post_type_archive'
     );
 
@@ -67,7 +67,7 @@ class pp_widget extends WP_Widget{
 
   // Update
   public function update( $new_instance, $old_instance ) {
-    $inst = array('title','cont','is_page','is_single','is_post_type_archive');
+    $inst = array('title','cont','is_page','is_singular','is_post_type_archive');
 
     foreach ($inst as $key) {
       $inst[$key] = ( ! empty( $new_instance[$key] ) ) ? sanitize_text_field( $new_instance[$key] ) : '' ;
@@ -76,4 +76,4 @@ class pp_widget extends WP_Widget{
   }
 }
 
-// require_once __DIR__.'/widgets_sc.php';
+require_once __DIR__.'/widgets_sc.php';

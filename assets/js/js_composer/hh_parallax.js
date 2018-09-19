@@ -4,7 +4,7 @@ window.addEventListener('load', (e) => {
   let docHeight = document.body.clientHeight;
   let winHeight = window.innerHeight;
   let winWidth = window.innerWidth;
-  let headerHeight = document.querySelector('header').offsetHeight;
+  // let headerHeight = document.querySelector('header').offsetHeight;
   let scrlHeight = docHeight - winHeight;
   loop()
 
@@ -15,8 +15,8 @@ window.addEventListener('load', (e) => {
     headerHeight = document.querySelector('header').offsetHeight;
     scrlHeight = docHeight - winHeight;
     parallaxes.forEach((el,i)=>{
-      el.parStart = (el.offsetTop + headerHeight - winHeight) / scrlHeight;
-      el.parEnd = (el.offsetTop + headerHeight + el.offsetHeight) / scrlHeight;
+      el.parStart = (el.offsetTop - winHeight) / scrlHeight;
+      el.parEnd = (el.offsetTop + el.offsetHeight) / scrlHeight;
       let elImg = el.querySelector('img');
       if (winWidth < 1200){
         elImg.style.left = 'calc(100% - 1200px)';
@@ -30,8 +30,8 @@ window.addEventListener('load', (e) => {
   }
 
   parallaxes.forEach((el,i) => {
-    el.parStart = (el.offsetTop + headerHeight - winHeight) / scrlHeight;
-    el.parEnd = (el.offsetTop + headerHeight + el.offsetHeight) / scrlHeight;
+    el.parStart = (el.offsetTop - winHeight) / scrlHeight;
+    el.parEnd = (el.offsetTop + el.offsetHeight) / scrlHeight;
     el.parSpeed = el.getAttribute('data-hh-parallax');
     el.parTarget; el.parCurrent;
     const parImg = document.createElement('img');
@@ -47,7 +47,7 @@ window.addEventListener('load', (e) => {
       } else if (scrlPercent >= el.parEnd){
         el.parTarget = el.parSpeed*el.offsetHeight*el.parEnd;
       } else {
-        el.parTarget = (el.parSpeed*winHeight*(scrlPercent-el.parStart))
+        el.parTarget = (el.parSpeed*winHeight*(scrlPercent-el.parStart)/(el.parEnd - el.parStart))
       }
       if(!el.parCurrent) {
         el.parCurrent = el.parTarget;
